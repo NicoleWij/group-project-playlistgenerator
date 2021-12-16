@@ -1,0 +1,280 @@
+/* topbarView */
+
+* {
+	font-family: 'Odibee Sans';
+	color: white;
+}
+
+html{
+	background-color: #151443;
+	height: 2000px;
+	background: cover;
+	background-size: cover;
+	  
+}
+
+.topBar{
+	background: linear-gradient(black 60%, #151443 100%);
+	height: 30vh;
+	position: relative;
+}
+
+.bottomBar{
+	background: linear-gradient(black 60%, #151443 100%);
+	height: 30vh;
+	position: fixed;
+	bottom: 0;
+
+}
+
+.top{
+	width: 23%;
+	height: 15%;
+	background-color: black;
+	padding-top: 10px;
+	position: absolute;
+	top: 0px;
+	right: 0;
+}
+
+.disclaimer{
+	font-size: 100%;
+	position: absolute;
+	left: 10px;
+	color: #909196;
+}
+
+.topbuttons{
+	float: right;
+	display: inline;
+	margin-right: 1vw;
+	height: 100%;
+}
+
+.b1{
+	height:35px;
+	width: 100px;
+	float: left;
+	font-size: 1.5em;
+	background-color: #151443;
+	box-shadow: 3px 3px 3px #909196;
+	margin-left: 1vw;
+	cursor: pointer;
+}
+
+.head{
+	height: 100px;
+	width: 100%;
+	text-align: center;
+	font-size: 10vmin;
+	position: absolute;
+	left: 0;
+	top: 50px;
+}
+
+.nav{
+	width: 100%;
+	height: 20%;
+	position: absolute;
+	bottom: 30px;
+}
+
+.b2{
+	width: 33%;
+	height: 100%;
+	background: none;
+	border: none; 
+  	margin: 0;
+  	padding: 0;
+	font-size: 3vmin;
+	cursor: pointer;
+	background: 
+     linear-gradient(90deg, transparent, white, transparent) 
+    bottom /var(--d, 0) 3px no-repeat;
+}
+.b2:hover{
+	--d: 30%;
+	transition: 0.5s;
+}
+
+.menu{
+	display: flex;
+	width: 100%;
+	height: 67%;
+}
+
+.menudiv{
+	width: 33%;
+	height: 100%;
+}
+
+.menuitem{
+	width: 100%;
+	height: 100%;
+}
+
+.noData{
+
+	background-color: #151443;
+	font-size: 500%;
+	height: 20%;
+	width: 100%;
+	text-align: center;
+	align-items: center;
+}
+
+.noDataItem{
+	width: 100%;
+}
+
+.retryButton{
+	background-color: blueviolet;
+	height: 100%;
+	width: 20%;
+	text-align: center;
+	margin: 0 auto;
+	cursor: pointer;
+	border-radius: 10px;
+}
+
+@media (max-width: 480px) {
+	
+	.topBar{
+		background: linear-gradient(black 60%, #151443 100%);
+		height: 350px;
+		width: 100%;
+		/*position: relative;*/
+		position: static;
+		/*border-style: solid;
+		border-color: red;*/
+	}
+	
+	.top{
+		width: 100%;
+		height: 70px;
+		/*border-style: solid;
+		border-color: green;*/
+		display: flex;
+		justify-content:center;
+		align-items:center;
+	}
+	
+	.topbuttons{
+		float: left;
+		display: inline;
+		margin-right: 1vw;
+		height: 100%;
+		/*border-style: solid;
+		border-color: yellow;*/
+		width:320px;
+		margin: 0 auto;
+	}
+
+	.b1{
+		height: 100%;
+		width: 150px;
+		float:none;
+		font-size: 11vmin;
+		margin-left: 0;
+	}
+
+	.login{
+		margin-left: 20px;
+	}
+	
+
+	/*
+	.head{
+		height: 100px;
+		width: 100%;
+		text-align: center;
+		font-size: 10vmin;
+		position: absolute;
+		left: 0;
+		top: 50px;
+	}
+	*/
+	.head{
+		height: 100px;
+		width: 100%;
+		text-align: center;
+		font-size: 18vmin;
+		/*position: relative;*/
+		position: static;
+		/*border-color: blue;
+		border-style: solid;*/
+		/*left: 0;*/
+		/*top: 50px;*/
+		padding-top: 100px;
+	}
+
+
+
+	
+	.nav{
+		width: 100%;
+		height: 100px;
+		/*position: absolute;*/
+		position:static;
+		/*bottom: 0px;*/
+	/*	border-color: pink;
+		border-style: solid;*/
+	}
+
+
+	
+	.b2{
+		width: 33%;
+		height: 100%;
+		background: none;
+		border: none; 
+		  margin: 0;
+		  padding: 0;
+		font-size: 6.5vmin;
+		background: 
+		 linear-gradient(90deg, transparent, white, transparent) 
+		bottom /var(--d, 0) 3px no-repeat;
+	}
+	
+	/*
+	.menu{
+		display: flex;
+		width: 100%;
+		height: 67%;
+	}
+	
+	.menudiv{
+		width: 33%;
+		height: 100%;
+	}
+	
+	.menuitem{
+		width: 100%;
+		height: 100%;
+	}
+	
+	.noData{
+	
+		background-color: #151443;
+		font-size: 500%;
+		height: 20%;
+		width: 100%;
+		text-align: center;
+		align-items: center;
+	}
+	
+	.noDataItem{
+		width: 100%;
+	}
+	
+	.retryButton{
+		background-color: blueviolet;
+		height: 100%;
+		width: 20%;
+		text-align: center;
+		margin: 0 auto;
+		cursor: pointer;
+		border-radius: 10px;
+	}
+	*/
+}

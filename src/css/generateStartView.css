@@ -1,0 +1,309 @@
+html{
+    height: 100%;
+}
+.menuG{
+    height: 50vh;
+    width: 100%;
+    display: flex;
+}
+
+.menuItemG{
+    height: 100%;
+    width: 33%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.button10{
+    width: 40%;
+    height: 50%;
+    background-color: rgb(51, 50, 51);
+    display: grid;
+    place-content: center;
+    text-align: center;
+    font-size: 200%;
+    cursor: pointer;
+    border-radius: 30px;
+    position: absolute;
+    margin-bottom: 30%;
+    right: 0;
+    transition-duration: 0.4s;
+}
+
+.pressedButton10{
+    width: 40%;
+    height: 50%;
+    background-color: rgb(125, 94, 160);
+    display: grid;
+    place-content: center;
+    text-align: center;
+    font-size: 200%;
+    cursor: pointer;
+    border-radius: 30px;
+    position: absolute;
+    margin-bottom: 30%;
+    right: 0;
+    transition-duration: 0.4s;
+}
+
+.button20{
+    width: 40%;
+    height: 50%;
+    background-color: rgb(51, 50, 51);
+    margin-bottom: 0;
+    display: grid;
+    place-content: center;
+    text-align: center;
+    font-size: 200%;
+    cursor: pointer;
+    border-radius: 30px;
+    position: absolute;
+    margin-bottom: 30%;
+    transition-duration: 0.4s;
+}
+
+.pressedButton20{
+    width: 40%;
+    height: 50%;
+    background-color: rgb(125, 94, 160);
+    margin-bottom: 0;
+    display: grid;
+    place-content: center;
+    text-align: center;
+    font-size: 200%;
+    cursor: pointer;
+    border-radius: 30px;
+    position: absolute;
+    margin-bottom: 30%;
+    transition-duration: 0.4s;
+}
+
+.button30{
+    width: 40%;
+    height: 50%;
+    background-color: rgb(51, 50, 51);
+    display: grid;
+    place-content: center;
+    text-align: center;
+    font-size: 200%;
+    cursor: pointer;
+    border-radius: 30px;
+    position: absolute;
+    margin-bottom: 30%;
+    left: 0;
+    transition-duration: 0.4s;
+}
+
+.pressedButton30{
+    width: 40%;
+    height: 50%;
+    background-color: rgb(125, 94, 160);
+    display: grid;
+    place-content: center;
+    text-align: center;
+    font-size: 200%;
+    cursor: pointer;
+    border-radius: 30px;
+    position: absolute;
+    margin-bottom: 30%;
+    left: 0;
+    transition-duration: 0.4s;
+}
+
+.button10:hover{
+    background-color: rgb(125, 94, 160);
+}
+
+.button20:hover{
+    background-color: rgb(125, 94, 160);
+}
+
+.button30:hover{
+    background-color: rgb(125, 94, 160);
+}
+
+.titleTextG{
+    font-size: 300%;
+    place-content: center;
+    text-align: center;
+    margin-bottom:50px;
+}
+
+.explicitTextG{
+    font-size: 200%;
+    place-content: center;
+    text-align: center;
+}
+
+.switch{
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    margin-bottom: 50px;
+}
+
+/* Hide default HTML checkbox */
+.switch input{
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* The slider */
+  .slider{
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before{
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: rgb(125, 94, 160);
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px rgb(125, 94, 160);
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+
+  @media (max-width: 480px) {
+    .menuG{
+        height: auto;
+        width: 100%;
+        display: block;
+    }
+
+    .menuItemG{
+        height: 150px;
+        width: 90%;
+        margin-left: 5%;
+        display: flex;
+        justify-content: center;
+        position: relative;
+    }
+
+    .button10{
+        width: 100%;
+        height: 95%;
+        margin-bottom: 5%;
+        font-size: 12vmin;
+    }
+
+    .button20{
+        width: 100%;
+        height: 95%;
+        margin-bottom: 5%;
+        font-size: 12vmin;
+    }
+
+    .button30{
+        width: 100%;
+        height: 95%;
+        margin-bottom: 5%;
+        font-size: 12vmin;
+    }
+    
+    .pressedButton10{
+        width: 100%;
+        height: 95%;
+        margin-bottom: 5%;
+        font-size: 12vmin;
+    }
+
+    .pressedButton20{
+        width: 100%;
+        height: 95%;
+        margin-bottom: 5%;
+        font-size: 12vmin;
+    }
+
+    .pressedButton30{
+        width: 100%;
+        height: 95%;
+        margin-bottom: 5%;
+        font-size: 12vmin;
+    }
+
+    .explicitTextG{
+        font-size: 11vmin;
+    }
+
+    .switch{
+        position: relative;
+        display: inline-block;
+        width: 90px;
+        height: 100%;
+        margin-bottom: 30px;
+    }
+
+      .slider:before{
+        height: 46px;
+        width: 46px;
+      }
+      
+      input:checked + .slider:before {
+        -webkit-transform: translateX(36px);
+        -ms-transform: translateX(36px);
+        transform: translateX(36px);
+      }
+
+      .random{
+          display:block;
+          padding: 1px;
+      }
+
+    .titleTextG{
+        position: static;
+        font-size: 12vmin;
+        margin-bottom: 20px;
+        margin-top: 60px;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+
+    .random .buttonBack{
+        width: 40%;
+        height: 50px;
+        font-size: 10vmin;
+    }
+
+    .random .buttonNext{
+        width: 40%;
+        height: 50px;
+        font-size: 10vmin;
+    }
+
+}

@@ -1,0 +1,115 @@
+.playlistInfoDiv{
+    width: 100%;
+    position: relative;
+    place-items: center;
+    
+}
+table.playlistInfo{
+    background-color: rgb(125, 94, 160);
+    border-radius: 10px;
+    width: 40%;
+    height: 100%;
+    position: relative;
+    left: 30%;
+    right: 30%;
+    margin-top: 3%;
+    font-size: 300%;
+    
+}
+
+table.playlistInfo td, tr{
+    color: white;
+    vertical-align: top;
+    border-bottom: 5px;
+    border-color: black;
+  }
+
+.info{
+    font-size: 300%;
+}
+
+.generateButton{
+    background-color: rgb(51, 50, 51);
+    font-size: 350%;
+    border-radius: 5px;
+    width: 20%;
+    position: relative;
+    left: 40%;
+    right: 40%;
+    margin-top: 2%;
+    cursor: pointer;
+}
+
+.generateButton:hover{
+    background-color: rgb(125, 94, 160);
+}
+
+.playlistButton{
+    background-color: rgb(51, 50, 51);
+    font-size: 350%;
+    border-radius: 5px;
+    width: 20%;
+    position: relative;
+    left: 40%;
+    right: 40%;
+    margin-top: 2%;
+    cursor: pointer;
+}
+.shortList{
+    margin: auto;
+    margin-top: 5%;
+    width: 50%;
+    text-align: center;
+    font-size: 200%
+}
+
+@media (max-width: 480px) {
+    .playlistInfoDiv .buttonBack{
+        width: 90%;
+        margin-left: 5%;
+        height: 50px;
+        font-size: 10vmin;
+        position:static;
+    }
+
+    .playlistInfoDiv{
+        width: 100%;
+        position: static;
+        text-align: center;
+    }
+
+    .playlistInfoDiv .playlistInfo tr,td{
+        font-size: 8.2vmin;
+    }
+
+    .playlistInfoDiv .playlistInfo{
+        width: 90%;
+        margin-left: -25%;
+    }
+
+    .playlistInfo{
+        position: static;
+        width: 500px;
+        margin-left: 5%; 
+        border: solid;
+        margin-left: -10vw;
+        font-size: 1vmin;
+    }
+
+    .generateButton{
+        font-size: 12vmin;
+        width: fit-content;
+        margin: auto;
+        position: static;
+        margin-top: 2%;
+        cursor: pointer;
+    }
+
+    .after{
+        text-align: center;
+    }
+
+    .shortList{
+        font-size: 5.5vmin;
+    }
+}

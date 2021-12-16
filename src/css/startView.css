@@ -1,0 +1,133 @@
+
+html{
+    height: 100%;
+}
+
+.menu{
+    height: 70vh;
+    width: 100%;
+    display: flex;
+}
+
+.menuItem{
+    height: 75%;
+    width: 33%;
+    /* border-style: solid;
+    border-color: aquamarine; */
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.buttonRight{
+    width: 70%;
+    height: 80%;
+    background-color: rgb(125, 94, 160);
+    display: grid;
+    place-content: center;
+    text-align: center;
+    font-size: 500%;
+    cursor: pointer;
+    border-radius: 30px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+.buttonLeft{
+    width: 70%;
+    height: 80%;
+    background-color: rgb(125, 94, 160);
+    display: grid;
+    place-content: center;
+    text-align: center;
+    font-size: 500%;
+    cursor: pointer;
+    border-radius: 30px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.midButton{
+    width: 80%;
+    height: 90%;
+    background-color: rgb(125, 94, 160);
+    margin-bottom: 0;
+    display: grid;
+    place-content: center;
+    text-align: center;
+    font-size: 550%;
+    cursor: pointer;
+    border-radius: 30px;
+    position: absolute;
+    bottom: 0;
+}
+
+@media (max-width: 480px) {
+    .menu{
+       /* height: 70vh;*/
+      /* height: auto;*/
+        width: 100%;
+        display: block;
+       /* border-style: solid;
+        border-color: aquamarine; */
+    }
+    
+    .menuItem{
+        height: 250px;
+        width: 90%;
+        margin-left: 5%;
+       /* border-style: solid;
+        border-color: red;*/
+        display: flex;
+        justify-content: center;
+        position: relative;
+        margin-top: 15px;
+    }
+
+    .buttonLeft{
+        width: 100%;
+        height: 100%;
+        background-color: blueviolet;
+        display: grid;
+        place-content: center;
+        text-align: center;
+        font-size: 20vmin;
+        cursor: pointer;
+        border-radius: 30px;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
+    
+    .midButton{
+        width: 100%;
+        height: 100%;
+        background-color: blueviolet;
+        margin-bottom: 0;
+        display: grid;
+        place-content: center;
+        text-align: center;
+        font-size: 20vmin;
+        cursor: pointer;
+        border-radius: 30px;
+        position: absolute;
+        bottom: 0;
+    }
+
+    .buttonRight{
+        width: 100%;
+        height: 100%;
+        background-color: blueviolet;
+        display: grid;
+        place-content: center;
+        text-align: center;
+        font-size: 20vmin;
+        cursor: pointer;
+        border-radius: 30px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+
+}

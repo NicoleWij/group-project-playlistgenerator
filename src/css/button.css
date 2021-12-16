@@ -1,0 +1,69 @@
+.buttonNext{
+    width: 60px;
+    height: 50px;
+    background-color: rgb(51, 50, 51);
+    display: grid;
+    place-content: center;
+    text-align: center;
+    font-size: 200%;
+    cursor: pointer;
+    border-radius: 30px;
+    position: absolute;
+    transition-duration: 0.4s;
+    margin-right: 7%;
+    right: 0;
+}
+
+.buttonBack{
+    width: 60px;
+    height: 50px;
+    background-color: rgb(51, 50, 51);
+    display: grid;
+    place-content: center;
+    text-align: center;
+    font-size: 200%;
+    cursor: pointer;
+    border-radius: 30px;
+    position: absolute;
+    margin-left: 7%;
+    transition-duration: 0.4s;
+}
+
+.buttonNext:disabled{
+    background-color: rgb(116, 116, 116);
+    pointer-events: none;
+}
+
+.buttonNext:hover{
+    background-color: rgb(125, 94, 160);
+}
+
+.buttonBack:hover{
+    background-color: rgb(125, 94, 160);
+}
+
+.generateAButton{
+    background-color: rgb(51, 50, 51);
+    font-size: 50%;
+    border-radius: 5px;
+    width: 20%;
+    left: 40%;
+    right: 40%;
+    margin-top: 2%;
+    cursor: pointer;
+}
+
+.generateAButton:disabled{
+    background-color: rgb(116, 116, 116);
+    font-size: 50%;
+    border-radius: 5px;
+    width: 20%;
+    left: 40%;
+    right: 40%;
+    margin-top: 2%;
+    pointer-events: none;
+}
+
+.hiddenButton{
+    display: none;
+}

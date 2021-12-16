@@ -1,0 +1,47 @@
+.playButton{
+    background: none;
+    border: 0;
+    font-size: 2vmax;
+    cursor: pointer;
+    color: black;
+    width: 10px;
+    padding-right: 23px;
+}
+
+.topr{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    padding-top: 10px;
+}
+
+.titletext{
+    background: transparent;
+    border: none;
+    outline: none;
+    width: 50%;
+    font-size: 3vmax;
+}
+
+@media (max-width: 480px) {
+    .playlistMenu{
+        height: auto;
+        margin-top: -30px;
+    }
+
+    .topr{
+        margin-top: -100px;
+        width: 100%;
+        height: 10%;
+        display: flex;
+        padding-top: 10px;
+    }
+
+    .titletext{
+        width: 70%;
+        font-size: 15vmin;
+       /* border-style: solid;
+        border-color: rgb(0, 195, 255);*/
+    }
+
+}

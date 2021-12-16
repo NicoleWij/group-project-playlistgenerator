@@ -1,0 +1,262 @@
+.contentbox{
+    display: flex;
+    width: 99vw;
+    height: 65vh;
+   /* border-style: solid;*/
+   /* border-color: red;*/
+}
+
+.sidebox{
+    width: 25vw;
+    height: 65vh;
+   /* border-style: solid;*/
+    /*border-color: blue;*/
+}
+
+.midbox{
+    display: block;
+    width: 50vw;
+    height: 65vh;
+    /*border-style: solid;*/
+   /* border-color: green;*/
+}
+
+.formbox{
+    width: 100%;
+    height: 60%;
+    border-style: solid;
+    background-color: rgba(176,176,176, 0.8);
+    border-radius: 10px;
+   /* height:auto;*/
+}
+
+.bottombox{
+    width: 70%;
+    height: 20%;
+    margin-left: 15% ;
+   /* border-style: solid;*/
+    background-color: #151443;
+    box-shadow: 5px 5px 5px #909196;
+}
+
+.row1{
+    height: 20%;
+    width: 100%;
+    text-align: center;
+    font-size: 7vh;
+}
+
+.row2{
+    height: 15%;
+    width: 100%;
+    text-align: center;
+    font-size: 4vh;
+}
+
+.row3{
+    height: 15%;
+    width: 100%;
+    text-align: center;
+}
+
+.row4{
+    height: 15%;
+    width: 100%;
+    text-align: center;
+    font-size: 4vh;
+    padding-top: 2%;
+}
+
+.row5{
+    height: 15%;
+    width: 100%;
+    text-align: center;
+}
+
+.inputbox{
+    width: 80%;
+    height: 100%;
+    color: black;
+    font-size: 200%;
+    text-align: center;
+}
+
+.row21{
+    height: 30%;
+    text-align: center;
+    font-size: 3vmin;
+}
+
+.row22{
+    height: 70%;
+}
+
+.boximg{
+    background-color: rgb(255, 255, 255);
+    height: 70%;
+    width: 10%;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+.arrow{
+    font-size: 10vw;
+    text-align: right;
+    position: absolute;
+    bottom: 4.8vh;
+    right: 1.05vw;
+    cursor: pointer;
+}
+
+.leftarrow{
+    margin-left: 10%;
+    width: fit-content;
+    height: fit-content;
+    text-align: center;
+    font-size: 3vw;
+    color: black;
+    border-radius: 8px;
+    text-size-adjust: 80%;
+    background-color: rgba(176,176,176, 0.8);
+    cursor: pointer;
+}
+
+@media (max-width: 480px) {
+    .contentbox{
+        display: block;
+        width: 100%;
+        height: 65vh;
+       /* border-style: solid;
+        border-color: red;*/
+    }
+    
+    .sidebox{
+        width: 100%;
+        height: 100px;
+       /* border-style: solid;
+        border-color: blue;*/
+    }
+    
+    .midbox{
+        display: block;
+        width: 90%;
+        margin-left: 5%;
+       /* height: 65vh;*/
+        height: 500px;
+       /* border-style: solid;
+        border-color: green;*/
+    }
+    
+    .formbox{
+        width: 100%;
+        height: 80%;
+        border-style: solid;
+        background-color: rgba(176,176,176, 0.8);
+        border-radius: 10px;
+       /* height:auto;*/
+    }
+    
+    .bottombox{
+        width: 90%;
+        height: 20%;
+        margin-left: 5% ;
+       /* border-style: solid;*/
+        background-color: #151443;
+        box-shadow: 5px 5px 5px #909196;
+    }
+    
+    .row1{
+        height: 18%;
+        width: 100%;
+        text-align: center;
+        font-size: 15vmin;
+      /*  border-style: solid;*/
+    }
+    
+    .row2{
+        height: 18%;
+        width: 100%;
+        text-align: center;
+        font-size: 13vmin;
+      /*  border-style: solid;*/
+    }
+    
+    .row3{
+        height: 18%;
+        width: 100%;
+        text-align: center;
+        font-size: 6vmin;
+        /*border-style: solid;*/
+    }
+    
+    .row4{
+        height: 18%;
+        width: 100%;
+        text-align: center;
+        font-size: 13vmin;
+        padding-top: 2%;
+    }
+    
+    .row5{
+        height: 18%;
+        width: 100%;
+        text-align: center;
+        font-size: 6vmin;
+        /*border-style: solid;*/
+    }
+    
+    .inputbox{
+        width: 90%;
+        height: 100%;
+        color: black;
+        font-size: 150%;
+        text-align: center;
+    }
+    
+    .row21{
+        height: 30%;
+        text-align: center;
+        font-size: 5vmin;
+    }
+    
+    .row22{
+        height: 70%;
+    }
+    
+    .boximg{
+        background-color: rgb(255, 255, 255);
+       /* height: 70%;*/
+        height: 13vmin;
+        width: 13vmin;
+        margin: 0 auto;
+    }
+
+    .arrow{
+        font-size: 22vmin;
+        text-align: center;
+        margin-top: -10px;
+       /* position: absolute;
+        bottom: 4.8vh;
+        right: 1.05vw;*/
+        position: static;
+       /* border-style: solid;*/
+    }
+
+    .leftarrow{
+        margin-left: 10%;
+       /* width: fit-content;
+        height: fit-content;*/
+        width: 80%;
+        height: 100%;
+        text-align: center;
+        font-size: 22vmin;
+       /* padding-bottom: 10px;*/
+        color: black;
+        border-radius: 8px;
+        text-size-adjust: 80%;
+        background-color: rgba(176,176,176, 0.8);
+        background: none;
+        color: inherit;
+        border: none;
+    }
+}
