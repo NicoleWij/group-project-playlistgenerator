@@ -9,11 +9,8 @@ function LoginPresenter(props) {
             {<LoginView
                 setEmail={text => email = text}
                 setPassword={text => password = text}
-                RegisterUser={() => {
-                    props.loginModel.RegisterUser(email, password)
-                }}
                 LoginUser={() => {
-                    props.loginModel.LoginUser(email, password)
+                    props.model.LoginUser(email, password)
                 }}
             />}
         </div>

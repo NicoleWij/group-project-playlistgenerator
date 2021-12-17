@@ -1,8 +1,9 @@
+// Your web app's Firebase configuration
 export const firebaseConfig = {
-    apiKey: "AIzaSyCmKdZAdHtInimko95ZU2RK9f1VKQduxoY",
-    authDomain: "moviedb-a034b.firebaseapp.com",
-    projectId: "moviedb-a034b",
-    storageBucket: "moviedb-a034b.appspot.com",
-    messagingSenderId: "331826806841",
-    appId: "1:331826806841:web:4f89b4b4bd55fcfd544de8"
+    apiKey: "AIzaSyBSJ6BDNnWu-UTxsEXAqCucFlGDTYll3IE",
+    authDomain: "playlistgenerator-8f96e.firebaseapp.com",
+    projectId: "playlistgenerator-8f96e",
+    storageBucket: "playlistgenerator-8f96e.appspot.com",
+    messagingSenderId: "528243316056",
+    appId: "1:528243316056:web:103e13bd366db69dd3c12d"
 };

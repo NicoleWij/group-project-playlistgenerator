@@ -1,10 +1,21 @@
-
+import {
+    getAuth,
+    createUserWithEmailAndPassword,
+    onAuthStateChanged,
+    signInWithEmailAndPassword,
+    signOut,
+} from 'firebase/auth';
+import { getDoc, setDoc, doc, updateDoc, collection, getDocs } from "firebase/firestore";
+import { db } from './firebaseConfig.js';
+import PlaylistModel from './playlistModel.js';
 class Model {
     constructor() {
         this.currentGenre = null;
         this.observers = [];
         this.currentPlaylist = "1";
         this.playlists = [];
+        this.playlist = null;
+        this.user = null;
         console.log("halloj");
         this.genreList = [
             {
@@ -72,6 +83,7 @@ class Model {
         ];
     }
 
+
     setCurrentGenre(genre) {
         this.currentGenre = genre;
         this.currentGenreArtists = null;
@@ -80,9 +92,25 @@ class Model {
     }
 
     savePlaylist(playlist) {
-        this.playlists = [...this.playlists, playlist];
-        this.playlists.find(p => p.name === playlist.name).date = new Date();
-        this.notifyObservers();
+        this.playlist = playlist;
+        this.playlist.date = new Date();
+        this.playlists.push(this.playlist);
+        (async () => {
+            try {
+                const docRef = doc(db, "users", this.user.uid).withConverter(converter);
+                const userlist = this.playlist;
+                console.log(userlist);
+                await setDoc(docRef, {
+                    userPlaylist: {
+                        userlist,
+                    },
+                });
+                console.log(this.user.uid);
+                this.notifyObservers();
+            } catch (e) {
+                console.error("Error adding document: ", e);
+            }
+        })();
     }
 
     addObserver(callback) {
@@ -97,6 +125,67 @@ class Model {
         });
     }
 
+    LoginUser(email, password) {
+        const auth = getAuth();
+
+        signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                this.user = userCredential.user;
+                console.log(this.user);
+            })
+            .catch((error) => {
+                console.log(error.code);
+                console.log(error.message);
+            });
+    }
+    RegisterUser(email, password) {
+        console.log(email, password);
+        const auth = getAuth();
+        createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                this.user = userCredential.user;
+                (async () => {
+                    try {
+                        const userlist = [];
+                        await setDoc(doc(db, "users", this.user.uid), {
+                            userPlaylist: {
+                                userlist,
+                            },
+                        });
+                    }
+                    catch (e) {
+                        console.error("Error adding playlist: ", e);
+                    }
+                })();
+            })
+            .catch((error) => {
+                console.log(error.code);
+                console.log(error.message);
+            });
+    }
+
+    logoutUser() {
+        const auth = getAuth();
+        signOut(auth)
+            .then(() => {
+                // Sign-out Succes
+            })
+            .catch((error) => {
+                // Error occured
+            });
+    }
+
 }
+const converter = {
+    toFirestore: (playlist) => {
+        return {
+            name: playlist.playlistName
+        };
+    },
+    fromFirestore: (snapshot, options) => {
+        const data = snapshot.data(options);
+        return new PlaylistModel(data.name);
+    }
+};
 
 export default Model;

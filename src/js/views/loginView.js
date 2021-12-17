@@ -13,6 +13,7 @@ function LoginView(props) {
                     <div className="row1">Login</div>
                     <div className="row2">Username</div>
                     <div className="row3"><input className="inputbox" onInput={e => props.setEmail(e.target.value)}></input></div>
+
                     <div className="row4">Password</div>
                     <div className="row5"><input className="inputbox" onInput={e => props.setPassword(e.target.value)}></input></div>
                 </div>
@@ -22,9 +23,7 @@ function LoginView(props) {
                     <div className="row22"> <div className="starimg" onClick={e => { window.location.hash = "#register" }}>&#9733;</div></div>
                 </div>
             </div>
-            <button className="Login" hidden={props.LoginUser} onClick={() => props.LoginUser()}>LOGIN</button>
-            <button className="Register" hidden={props.RegisterUser} onClick={() => props.RegisterUser()}>REGISTER</button>
-            <div className="sidebox"> <div className="arrow" onClick={e => { window.location.hash = "#start" }}>&#10230;</div> </div>
+            <div className="sidebox"> <div className="arrow" onClick={e => { props.LoginUser() }}>&#10230;</div> </div>
         </div>
     )
 }

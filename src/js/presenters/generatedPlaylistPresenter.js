@@ -21,7 +21,7 @@ function GeneratedPlaylistPresenter(props) {
         <div>
             {<GeneratedPlaylistView songs={songs}
                 playlistName={name}
-                setPlaylistName={(name) => props.pmodel.setPlaylistName(name) }
+                setPlaylistName={(name) => props.pmodel.setPlaylistName(name)}
                 playOrPause={(song) => { props.pmodel.setCurrentSong(song) }}
                 currentSong={currentSong}
                 save={() => props.savePlaylist(props.pmodel)}
