@@ -16,7 +16,7 @@ class PlaylistModel {
         this.playlistDone = false;
     }
 
-    resetModel() {
+    resetPlaylist() {
         this.playlistID = this.playlistID + 1;
         this.playlistName = null;
         this.chosenNumberOfSongs = 0;

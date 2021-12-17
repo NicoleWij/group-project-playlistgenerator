@@ -94,21 +94,19 @@ class Model {
     savePlaylist(playlist) {
         this.playlist = playlist;
         this.playlist.date = new Date();
-        this.playlists.push(this.playlist);
+        this.playlists.push({name:this.playlist.playlistName, songs:this.playlist.songs, date:this.playlist.date});
         (async () => {
             try {
-                const docRef = doc(db, "users", this.user.uid).withConverter(converter);
-                const userlist = this.playlist;
-                console.log(userlist);
-                await setDoc(docRef, {
-                    userPlaylist: {
-                        userlist,
-                    },
-                });
-                console.log(this.user.uid);
-                this.notifyObservers();
-            } catch (e) {
-                console.error("Error adding document: ", e);
+                const userlists = this.playlists;
+                await updateDoc(doc(db, "users", this.user.uid), {
+                    userPlaylists: {
+                        userlists
+                    }
+                }, { merge: true });
+                playlist.resetPlaylist();
+            }
+            catch (e) {
+                console.error("Error adding playlist: ", e);
             }
         })();
     }
@@ -132,31 +130,33 @@ class Model {
             .then((userCredential) => {
                 this.user = userCredential.user;
                 console.log(this.user);
-            })
-            .catch((error) => {
+                
+                // const userlist = this.playlist;
+                // const name = this.playlist.playlistName;
+                this.getDataBaseInfo();
+                })
+            .catch
+            ((error) => {
                 console.log(error.code);
                 console.log(error.message);
             });
     }
+    getDataBaseInfo() {
+        (async () => {
+            const querySnapshot = await getDoc(db, "users",this.user.uid);
+            console.log(querySnapshot.data)
+            this.notifyObservers();
+        })();
+    }
+
+
     RegisterUser(email, password) {
         console.log(email, password);
         const auth = getAuth();
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 this.user = userCredential.user;
-                (async () => {
-                    try {
-                        const userlist = [];
-                        await setDoc(doc(db, "users", this.user.uid), {
-                            userPlaylist: {
-                                userlist,
-                            },
-                        });
-                    }
-                    catch (e) {
-                        console.error("Error adding playlist: ", e);
-                    }
-                })();
+                this.LoginUser(email, password);
             })
             .catch((error) => {
                 console.log(error.code);
@@ -184,8 +184,10 @@ const converter = {
     },
     fromFirestore: (snapshot, options) => {
         const data = snapshot.data(options);
-        return new PlaylistModel(data.name);
+        return new PlaylistModel();
     }
 };
+
+
 
 export default Model;

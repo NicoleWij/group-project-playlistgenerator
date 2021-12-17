@@ -25,7 +25,7 @@ function ExploreArtistsPresenter(props) {
         const obs = () => {
             setGenre(props.model.currentGenre)
             setPromise(
-                SongSource.getArtistsFromGenre(genre)
+                SongSource.getArtistsFromGenre(props.model.currentGenre)
                     .then((data) => setData(data))
                     .catch((error) => setError(error))
             )
@@ -37,7 +37,7 @@ function ExploreArtistsPresenter(props) {
 
     return (
         <div>
-            {promiseNoArtists(promise, data, error) || (
+            {promiseNoArtists(promise, data, error) || (console.log(data),
                 <ExploreArtistsView artist={data.data}
                     genre={genre}
                     audio={audio}
