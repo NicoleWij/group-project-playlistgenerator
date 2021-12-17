@@ -11,9 +11,6 @@ function GenerateArtistsView(props) {
                 <div>Search for an artist you like:</div>
                 <input type="search" className="searchBar" onChange={e => props.onText(e.target.value)}></input>
             </div>
-            <div className="artistsBox">
-                <div>Added artist:</div>
-            </div>
         </div>
     )
 }
@@ -23,20 +20,23 @@ function SearchResultsView(props) {
     artists = artists.filter((x) => !(x.name.includes(",")))
     return (
         console.log(props.searchResults),
-        <div className="searchResults">
-            {artists.slice(0, 10).map(artist =>
-                <div className="result" onClick={e => props.addArtist(artist)}>{artist.name}</div>
-            )}
+        <div>
+            <div className="searchResults">
+                {artists.slice(0, 10).map(artist =>
+                    <div className="result" onClick={e => props.addArtist(artist)}>{artist.name}</div>
+                )}
+            </div>
         </div>
     )
 }
 
 function AddedArtistsView(props) {
     return (
-        <div className="addedArtists">
-            <div className="listContent">
-                <div className="deleteButton" onClick={e => props.removeArtist()}>x</div>
-                <div className="name">{props.artist.name}</div>
+        <div className="addedParent">
+            <div className="added">
+                <span> Added artist: </span>
+                <span className="deleteButton" onClick={e => props.removeArtist()}>x</span>
+                <span className="name"> {props.artist.name}</span>
             </div>
         </div>
     )
@@ -50,4 +50,4 @@ function FullList() {
     )
 }
 
-export { GenerateArtistsView, SearchResultsView, AddedArtistsView, FullList };
+export { AddedArtistsView, GenerateArtistsView, SearchResultsView, FullList };

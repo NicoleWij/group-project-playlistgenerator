@@ -22,6 +22,11 @@ function GenerateArtistsPresenter(props) {
 
     return (
         <div>
+            {PromiseNoRender("not null", dataArtists, error) || (
+            <AddedArtistsView artist={dataArtists}
+                removeArtist={() => { props.pmodel.removeArtist() }} 
+            />)}
+
             <GenerateArtistsView
                 artist={dataArtists}
                 onText={(search) => {
@@ -38,10 +43,7 @@ function GenerateArtistsPresenter(props) {
                     addArtist={(artist) => { (props.pmodel.artist === null) ? props.pmodel.addArtist(artist) : <FullList />}}
                 />)}
 
-            {PromiseNoRender("not null", dataArtists, error) || (
-                <AddedArtistsView artist={dataArtists}
-                    removeArtist={() => { props.pmodel.removeArtist() }} 
-                />)}
+
         </div>
     );
 
