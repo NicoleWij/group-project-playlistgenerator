@@ -73,6 +73,14 @@
     text-align: center;
 }
 
+.logButton{
+    font-size: 4vh;
+    background-color: #151443;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+}
+
 .inputbox{
     width: 80%;
     height: 100%;
@@ -128,5 +136,9 @@
     
     .starimg{
         font-size: 10.9vmin;
+    }
+
+    .logButton{
+        font-size: 10vmin;
     }
 }

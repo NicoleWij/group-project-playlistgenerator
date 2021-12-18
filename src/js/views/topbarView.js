@@ -11,7 +11,7 @@ function TopbarView() {
                     <button className="b1 login" onClick={e => { window.location.hash = "#login" }}>Log in</button>
                 </div>
             </div>
-            <div className="head">PlaylistGenerator</div>
+            <div className="head"><div className="headtxt" onClick={e => { window.location.hash = "#start" }}>PlaylistGenerator</div></div>
 
             <div className="nav">
                 <button className="b2" onClick={e => { window.location.hash = "#exploreGenre" }}>Explore</button>
