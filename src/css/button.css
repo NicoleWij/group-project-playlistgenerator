@@ -72,20 +72,10 @@
     .generateAButton{
         width: 90%;
         font-size: 9vmin;
-      /*  font-size: 50%;
-        width: 20%;
-        left: 40%;
-        right: 40%;
-        margin-top: 2%;*/
     }
     
     .generateAButton:disabled{
         width: 90%;
         font-size: 9vmin;
-       /* font-size: 50%;
-        width: 20%;
-        left: 40%;
-        right: 40%;
-        margin-top: 2%;*/
     }
 }

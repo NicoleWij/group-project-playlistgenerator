@@ -65,13 +65,15 @@
     width: 40%;
     position: sticky;
     left: 30%;
-   /* 
-    font-size: 350%;
-    width: 20%;
-    position: relative;
-    left: 40%;
-    right: 40%;
-    margin-top: 2%;
-    */
   }
+
+  .quotaLimitutton{
+    font-size: 10vmin;
+    width: 80%;
+    position: static;
+    margin-left: 10%;
+    text-align: center;
+  }
+
+
 }
