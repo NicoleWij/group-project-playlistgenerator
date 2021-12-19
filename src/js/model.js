@@ -17,7 +17,6 @@ class Model {
         this.playlist = null;
         this.user = null;
         this.currentPlaylist = null;
-        this.LoginUser("hej@gmail.com","hejhej")
         this.genreList = [
             {
                 id: "132",
