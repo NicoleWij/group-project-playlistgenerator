@@ -6,7 +6,7 @@ function StartPresenter(props) {
 
     return (
         <div>
-            <StartView pmodel={props.pmodel}/>
+            <StartView reset={() => props.pmodel.resetPlaylist()}/>
         </div>
     );
 }

@@ -8,9 +8,9 @@ function PlaylistView(props) {
 
             <div className="middlebox">
                 <div className="topr">
-                    <div className="titletext">&#128393; Playlist 1</div>
+                    <button className="titleText" onClick={e => props.resetName()}>&#128393;</button>
+                    <input type="text" className="titleText" placeholder={props.playlist.name} onChange={e => props.setPlaylistName(e.target.value)} ></input>
                     <div className="spacing"></div>
-                    <div className="savecontainer"><button className="save">Save</button></div>
                 </div>
 
                 <table className="playlisttable">
@@ -21,23 +21,22 @@ function PlaylistView(props) {
                             <td>Album</td>
                             <td>Length</td>
                         </tr>
-                        
-                        <tr>
-                            <td className="song"><button className="playButton">&#9658;</button>Song1</td>
-                            <td>Artist1</td>
-                            <td>Album1</td>
-                            <td>3:00</td>
-                        </tr>
-                        
-                        <tr>
-                            <td><button className="playButton">&#9658;</button>Song2</td>
-                            <td>Artist2</td>
-                            <td>Album2</td>
-                            <td>2:45</td>
-                        </tr>
+                        {props.playlist.songs.map(song => {
+                            return (
+                                <tr key={song.id}>
+                                    <td id="name" className="playButton" onClick={e => {
+                                        props.playOrPause(song);
+                                    }}>{song === props.currentSong ? "◼" : "▶"}</td>
+                                    <td>{tooLong(song.title) + (song.explicit_lyrics ? "🅴" : "")}</td>
+                                    <td>{tooLong(song.artist.name)}</td>
+                                    <td>{tooLong(song.album.title)}</td>
+                                    <td>{(song.duration / 60).toFixed(0)}:{addZero(song.duration % 60)}</td>
+                                </tr>
+                            );
+                        })}
 
                     </tbody>
-			    </table>
+                </table>
 
             </div>
 
@@ -46,6 +45,15 @@ function PlaylistView(props) {
         </div>
     )
 }
+
+function addZero(number) {
+    return number < 10 ? "0" + number : number;
+}
+
+function tooLong(string) {
+    return string.length > 20 ? string.slice(0, 40) + "..." : string;
+}
+
 
 
 export default PlaylistView;

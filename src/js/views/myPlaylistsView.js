@@ -23,9 +23,9 @@ function MyPlaylistsView(props) {
                         </tr>
                         {props.playlists.map(playlist => {
                             return (
-                                <tr>
-                                    <td>{playlist.name}<button className="pencil" onClick={e => { window.location.hash = "#playlist" }}>&#128393;</button></td>
-                                    <td>{getDate(playlist.date.seconds)}</td>
+                                <tr key={`${playlist.id}`} onClick={e => { return props.setCurrent(playlist), window.location.hash = "#playlist" }}>
+                                    <td>{playlist.name}<button className="pencil" >&#128393;</button></td>
+                                    <td>{playlist.date}</td>
                                     <td>{playlist.songs.length}</td>
                                 </tr>)
                         })}
@@ -38,11 +38,6 @@ function MyPlaylistsView(props) {
 
         </div>
     )
-}
-
-function getDate(timestamp){
-    let date = new Date(timestamp);
-    return date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear();
 }
 
 export default MyPlaylistsView;

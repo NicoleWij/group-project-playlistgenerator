@@ -2,11 +2,11 @@ import React from 'react';
 import  TopbarView  from '../views/topbarView';
 
 
-function TopBarPresenter() {
+function TopBarPresenter(props) {
 
     return (
         <div>
-            <TopbarView />
+            <TopbarView reset={() => props.pmodel.resetPlaylist()}/>
         </div>
     );
 }

@@ -20,6 +20,7 @@ const SongSource = {   // JS object creation literal
     },
 
     getArtistsFromGenre(id) {
+        console.log(id)
         return SongSource.apiCall("/genre/" + id + "/artists");
     },
 

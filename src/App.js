@@ -46,8 +46,9 @@ function App(props) {
         model={props.model} /></Show>
 
       <Show hash="#playlistInfo" class="mainContent debug"><PlaylistInfoPresenter pmodel={props.pmodel} /></Show>
-      <Show hash="#playlist" class="mainContent debug"><PlaylistPresenter model={props.model} /></Show>
       <Show hash="#myPlaylists" class="mainContent debug"><MyPlaylistsPresenter model={props.model} /></Show>
+      <Show hash="#playlist" class="mainContent debug"><PlaylistPresenter model={props.model}
+        pmodel={props.pmodel} /></Show>
     </div>
   );
 }

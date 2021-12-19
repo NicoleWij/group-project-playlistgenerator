@@ -14,7 +14,7 @@ function LoginView(props) {
                     <div className="row2">Email</div>
                     <div className="row3"><input className="inputbox" onInput={e => props.setEmail(e.target.value)}></input></div>
                     <div className="row4">Password</div>
-                    <div className="row5"><input className="inputbox" onInput={e => props.setPassword(e.target.value)}></input></div>
+                    <div className="row5"><input className="inputbox" type="password" onInput={e => props.setPassword(e.target.value)}></input></div>
                     <div className="row6"><button className="logButton" onClick={e => { props.LoginUser(); window.location.hash = "#myPlaylists"; }} >Log in</button></div>
                 </div>
 

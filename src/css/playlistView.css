@@ -19,7 +19,7 @@
     background: transparent;
     border: none;
     outline: none;
-    width: 50%;
+    display: inline-block;
     font-size: 3vmax;
 }
 

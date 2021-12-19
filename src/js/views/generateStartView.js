@@ -3,6 +3,7 @@ import '../../css/generateStartView.css';
 import '../../css/button.css';
 
 export function GenerateStartView(props) {
+    console.log(props.currentNumberOfSongs)
     return (
         <div>
             <div className="random">

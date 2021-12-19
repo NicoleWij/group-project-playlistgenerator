@@ -1,7 +1,7 @@
 import React from 'react';
-import  MyPlaylistView  from '../views/myPlaylistsView';
+import MyPlaylistView from '../views/myPlaylistsView';
 
-function MyPlaylistsPresenter(props){
+function MyPlaylistsPresenter(props) {
     const [playlists, setPlaylists] = React.useState(props.model.playlists);
 
     React.useEffect(() => {
@@ -14,7 +14,8 @@ function MyPlaylistsPresenter(props){
 
     return (
         <div>
-            {<MyPlaylistView playlists={playlists}/>}
+            {<MyPlaylistView playlists={playlists}
+                setCurrent={(playlist) => props.model.setCurrentPlaylist(playlist)} />}
         </div>
     );
 }

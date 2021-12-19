@@ -1,3 +1,4 @@
+import { getDefaultNormalizer } from '@testing-library/react';
 import {
     getAuth,
     createUserWithEmailAndPassword,
@@ -15,7 +16,8 @@ class Model {
         this.playlists = [];
         this.playlist = null;
         this.user = null;
-        console.log("halloj");
+        this.currentPlaylist = null;
+        this.LoginUser("hej@gmail.com","hejhej")
         this.genreList = [
             {
                 id: "132",
@@ -92,21 +94,32 @@ class Model {
 
     savePlaylist(playlist) {
         this.playlist = playlist;
-        this.playlist.date = new Date();
-        this.playlists.push({ name: this.playlist.playlistName, songs: this.playlist.songs, date: this.playlist.date });
+        const date = new Date()
+        this.playlist.date = `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`;
+        this.playlist.id = this.playlists.length;
+        this.playlists.push({ id:this.playlist.id, name: this.playlist.playlistName, songs: this.playlist.songs, date: this.playlist.date });
+
+        this.playlists = this.playlists.filter(
+            (playlist) => playlist !== undefined
+        );
+        this.notifyObservers();
         const docRef = doc(db, "users", this.user.uid);
         (async () => {
             try {
                 const userlist = this.playlists;
-                await updateDoc(doc(docRef), {
+                await updateDoc(docRef, {
                     userPlaylists: userlist,
                 });
-                this.notifyObservers();
             }
             catch (e) {
                 console.error("Error adding playlist: ", e);
             }
         })();
+    }
+
+    setCurrentPlaylist(playlist){
+        this.currentPlaylist = playlist;
+        this.notifyObservers();
     }
 
     addObserver(callback) {
@@ -143,6 +156,9 @@ class Model {
             const data = doc.data();
             data.userPlaylists.forEach(list => this.playlists.push(list));
             console.log(this.playlists);
+            this.playlists = this.playlists.filter(
+                (playlist) => playlist !== undefined
+            );
             this.notifyObservers();
         })();
     }

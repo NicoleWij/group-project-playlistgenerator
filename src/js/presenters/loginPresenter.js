@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import LoginView from '../views/loginView';
 
 function LoginPresenter(props) {
@@ -9,8 +9,8 @@ function LoginPresenter(props) {
             {<LoginView
                 setEmail={text => email = text}
                 setPassword={text => password = text}
-                LoginUser={() => {
-                    props.model.LoginUser(email, password)
+                LoginUser={() => {return (
+                    props.model.LoginUser(email, password))
                 }}
             />}
         </div>

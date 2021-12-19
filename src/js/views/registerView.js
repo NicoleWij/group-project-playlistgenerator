@@ -14,7 +14,7 @@ export function RegisterView(props) {
                     <div className="row2">Enter Email</div>
                     <div className="row3"><input className="inputbox" onInput={e => props.getEmail(e.target.value)}></input></div>
                     <div className="row4">Create Password</div>
-                    <div className="row5"><input className="inputbox" onInput={e => props.getPassword(e.target.value)}></input></div>
+                    <div className="row5"><input className="inputbox" type="password" onInput={e => props.getPassword(e.target.value)}></input></div>
                     <div className="row6"><button className="regButton" onClick={e => { props.RegisterUser(); window.location.hash = "#myPlaylists"; }} >Register</button></div>
                 </div>
 
