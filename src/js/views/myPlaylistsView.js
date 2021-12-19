@@ -3,7 +3,6 @@ import '../../css/myPlaylistsView.css';
 
 function MyPlaylistsView(props) {
     console.log(props.playlists)
-    console.log("hej")
     return (
         <div className="playlistMenu">
             <div className="leftbox"><button className="buttonBack" onClick={e => { window.location.hash = "#start" }}>←</button></div>
@@ -24,7 +23,7 @@ function MyPlaylistsView(props) {
                         {props.playlists.map(playlist => {
                             return (
                                 <tr key={`${playlist.id}`} onClick={e => { return props.setCurrent(playlist), window.location.hash = "#playlist" }}>
-                                    <td>{playlist.name}<button className="pencil" >&#128393;</button></td>
+                                    <td>{playlist.name}</td>
                                     <td>{playlist.date}</td>
                                     <td>{playlist.songs.length}</td>
                                 </tr>)
