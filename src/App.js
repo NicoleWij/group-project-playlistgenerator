@@ -29,9 +29,14 @@ function App(props) {
   defaultRoute();
   return (
     <div>
+<<<<<<< Updated upstream
       <TopBarPresenter />
       <Show hash="#start" class="mainContent debug"><StartPresenter pmodel={props.pmodel} 
       model={props.model} /></Show>
+=======
+      <TopBarPresenter model={props.model}/>
+      <Show hash="#start" class="mainContent debug"><StartPresenter pmodel={props.pmodel} /></Show>
+>>>>>>> Stashed changes
       <Show hash="#exploreGenre" class="mainContent debug"><ExploreGenrePresenter model={props.model} /></Show>
       <Show hash="#exploreArtists" class="mainContent debug"><ExploreArtistsPresenter model={props.model} /></Show>
       <Show hash="#generateStart" class="mainContent debug"><GenerateStartPresenter pmodel={props.pmodel} /></Show>
@@ -43,6 +48,7 @@ function App(props) {
 
       <Show hash="#login" class="mainContent debug"><LoginPresenter model={props.model} /></Show>
       <Show hash="#register" class="mainContent debug"><RegisterPresenter model={props.model} /></Show>
+      <Show hash="#register" class="mainContent debug"><TopBarPresenter model={props.model} /></Show>
       <Show hash="#generatedPlaylist" class="mainContent debug"><GeneratedPlaylistPresenter pmodel={props.pmodel}
         model={props.model} /></Show>
 
