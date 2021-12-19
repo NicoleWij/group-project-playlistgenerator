@@ -30,7 +30,8 @@ function App(props) {
   return (
     <div>
       <TopBarPresenter />
-      <Show hash="#start" class="mainContent debug"><StartPresenter pmodel={props.pmodel} /></Show>
+      <Show hash="#start" class="mainContent debug"><StartPresenter pmodel={props.pmodel} 
+      model={props.model} /></Show>
       <Show hash="#exploreGenre" class="mainContent debug"><ExploreGenrePresenter model={props.model} /></Show>
       <Show hash="#exploreArtists" class="mainContent debug"><ExploreArtistsPresenter model={props.model} /></Show>
       <Show hash="#generateStart" class="mainContent debug"><GenerateStartPresenter pmodel={props.pmodel} /></Show>

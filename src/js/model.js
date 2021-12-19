@@ -12,7 +12,7 @@ class Model {
     constructor() {
         this.currentGenre = null;
         this.observers = [];
-        this.currentPlaylist = "1";
+        this.currentPlaylist = null;
         this.playlists = [];
         this.playlist = null;
         this.user = null;
@@ -94,9 +94,9 @@ class Model {
     savePlaylist(playlist) {
         this.playlist = playlist;
         const date = new Date()
-        this.playlist.date = `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`;
+        this.playlist.date = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
         this.playlist.id = this.playlists.length;
-        this.playlists.push({ id:this.playlist.id, name: this.playlist.playlistName, songs: this.playlist.songs, date: this.playlist.date });
+        this.playlists.push({ id: this.playlist.id, name: this.playlist.playlistName, songs: this.playlist.songs, date: this.playlist.date });
 
         this.playlists = this.playlists.filter(
             (playlist) => playlist !== undefined
@@ -116,8 +116,30 @@ class Model {
         })();
     }
 
-    setCurrentPlaylist(playlist){
+    setCurrentPlaylist(playlist) {
         this.currentPlaylist = playlist;
+        this.notifyObservers();
+    }
+
+    setPlaylistName(name) {
+        console.log(this.currentPlaylist)
+        this.currentPlaylist.name = name;
+        this.playlists = this.playlists.filter(
+            (playlist) => playlist !== undefined
+        );
+        const docRef = doc(db, "users", this.user.uid);
+        (async () => {
+            try {
+                const userlist = this.playlists;
+                await updateDoc(docRef, {
+                    userPlaylists: userlist,
+                });
+            }
+            catch (e) {
+                console.error("Error adding playlist: ", e);
+            }
+        })();
+        console.log(this.playlists);
         this.notifyObservers();
     }
 

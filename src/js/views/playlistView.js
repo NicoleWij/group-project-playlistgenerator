@@ -4,13 +4,19 @@ import '../../css/playlistView.css';
 function PlaylistView(props) {
     return (
         <div className="playlistMenu">
-            <div className="leftbox"></div>
+            <div className="leftbox">
+                <button className="buttonBack" onClick={e => {
+                    window.location.hash = "#myPlaylists"
+                }}>←</button>
+            </div>
 
             <div className="middlebox">
                 <div className="topr">
-                    <button className="titleText" onClick={e => props.resetName()}>&#128393;</button>
-                    <input type="text" className="titleText" placeholder={props.playlist.name} onChange={e => props.setPlaylistName(e.target.value)} ></input>
-                    <div className="spacing"></div>
+                    <div type="text" className="titleText" >{props.name}
+                        <button className="titleText" onClick={e => props.changeName()}>&#128393;</button>
+                    </div>
+                    <input className={props.change?"input":"hidden"} onChange={e => props.setPlaylistName(e.target.value)}></input>
+                    <button className={props.change?"saveName":"hidden"} onClick={e => props.saveName()}>Save</button>
                 </div>
 
                 <table className="playlisttable">
@@ -45,6 +51,7 @@ function PlaylistView(props) {
         </div>
     )
 }
+
 
 function addZero(number) {
     return number < 10 ? "0" + number : number;

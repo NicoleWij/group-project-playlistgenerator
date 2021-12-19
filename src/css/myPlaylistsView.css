@@ -78,6 +78,14 @@
     font-size: 3vmax;
 }
 
+.input{
+    color: black;
+}
+
+.saveName{
+    background-color: #151443;
+}
+
 table.playlisttable{
     margin-top: 5px;
     width: 100%;
