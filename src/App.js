@@ -29,14 +29,11 @@ function App(props) {
   defaultRoute();
   return (
     <div>
-<<<<<<< Updated upstream
-      <TopBarPresenter />
+      <TopBarPresenter pmodel={props.pmodel} />
       <Show hash="#start" class="mainContent debug"><StartPresenter pmodel={props.pmodel} 
       model={props.model} /></Show>
-=======
       <TopBarPresenter model={props.model}/>
       <Show hash="#start" class="mainContent debug"><StartPresenter pmodel={props.pmodel} /></Show>
->>>>>>> Stashed changes
       <Show hash="#exploreGenre" class="mainContent debug"><ExploreGenrePresenter model={props.model} /></Show>
       <Show hash="#exploreArtists" class="mainContent debug"><ExploreArtistsPresenter model={props.model} /></Show>
       <Show hash="#generateStart" class="mainContent debug"><GenerateStartPresenter pmodel={props.pmodel} /></Show>
