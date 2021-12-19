@@ -40,8 +40,12 @@
     .titletext{
         width: 70%;
         font-size: 15vmin;
-       /* border-style: solid;
-        border-color: rgb(0, 195, 255);*/
+    }
+
+    .playlistMenu .middlebox{
+        width: 95%;
+        margin-left: 1%;
+        margin-top: 20%;
     }
 
 }
