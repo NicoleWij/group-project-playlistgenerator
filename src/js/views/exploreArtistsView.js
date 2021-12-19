@@ -8,7 +8,7 @@ function ExploreArtistsView(props) {
                 if (props.audio !== null) props.audio.pause();
                 window.location.hash = "#exploreGenre"
             }}>←</button>
-            <div className="title">Explore artists in the {props.genre.name} genre!</div>
+            <div className="title">Explore artists in the  genre!</div>
             {props.artist.map(artist =>
                 <span className="exploreView" key={artist.id} onClick={e => {
                     if (props.audio !== null) props.audio.pause();

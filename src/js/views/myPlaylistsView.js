@@ -3,6 +3,7 @@ import '../../css/myPlaylistsView.css';
 
 function MyPlaylistsView(props) {
     console.log(props.playlists)
+    console.log("hej")
     return (
         <div className="playlistMenu">
             <div className="leftbox"><button className="buttonBack" onClick={e => { window.location.hash = "#start" }}>←</button></div>
@@ -23,8 +24,8 @@ function MyPlaylistsView(props) {
                         {props.playlists.map(playlist => {
                             return (
                                 <tr>
-                                    <td>{playlist.playlistName}<button className="pencil" onClick={e => { window.location.hash = "#playlist" }}>&#128393;</button></td>
-                                    <td>{playlist.date.toString()}</td>
+                                    <td>{playlist.name}<button className="pencil" onClick={e => { window.location.hash = "#playlist" }}>&#128393;</button></td>
+                                    <td>{getDate(playlist.date.seconds)}</td>
                                     <td>{playlist.songs.length}</td>
                                 </tr>)
                         })}
@@ -37,6 +38,11 @@ function MyPlaylistsView(props) {
 
         </div>
     )
+}
+
+function getDate(timestamp){
+    let date = new Date(timestamp);
+    return date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear();
 }
 
 export default MyPlaylistsView;

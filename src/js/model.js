@@ -7,7 +7,6 @@ import {
 } from 'firebase/auth';
 import { getDoc, setDoc, doc, updateDoc, collection, getDocs } from "firebase/firestore";
 import { db } from './firebaseConfig.js';
-import PlaylistModel from './playlistModel.js';
 class Model {
     constructor() {
         this.currentGenre = null;
@@ -94,16 +93,15 @@ class Model {
     savePlaylist(playlist) {
         this.playlist = playlist;
         this.playlist.date = new Date();
-        this.playlists.push({name:this.playlist.playlistName, songs:this.playlist.songs, date:this.playlist.date});
+        this.playlists.push({ name: this.playlist.playlistName, songs: this.playlist.songs, date: this.playlist.date });
+        const docRef = doc(db, "users", this.user.uid);
         (async () => {
             try {
-                const userlists = this.playlists;
-                await updateDoc(doc(db, "users", this.user.uid), {
-                    userPlaylists: {
-                        userlists
-                    }
-                }, { merge: true });
-                playlist.resetPlaylist();
+                const userlist = this.playlists;
+                await updateDoc(doc(docRef), {
+                    userPlaylists: userlist,
+                });
+                this.notifyObservers();
             }
             catch (e) {
                 console.error("Error adding playlist: ", e);
@@ -130,11 +128,8 @@ class Model {
             .then((userCredential) => {
                 this.user = userCredential.user;
                 console.log(this.user);
-                
-                // const userlist = this.playlist;
-                // const name = this.playlist.playlistName;
                 this.getDataBaseInfo();
-                })
+            })
             .catch
             ((error) => {
                 console.log(error.code);
@@ -142,9 +137,12 @@ class Model {
             });
     }
     getDataBaseInfo() {
+        const docRef = doc(db, "users", this.user.uid);
         (async () => {
-            const querySnapshot = await getDoc(db, "users",this.user.uid);
-            console.log(querySnapshot.data)
+            const doc = await getDoc(docRef);
+            const data = doc.data();
+            data.userPlaylists.forEach(list => this.playlists.push(list));
+            console.log(this.playlists);
             this.notifyObservers();
         })();
     }
@@ -156,6 +154,17 @@ class Model {
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 this.user = userCredential.user;
+                (async () => {
+                    try {
+                        await setDoc(doc(db, "users", this.user.uid), {
+                            userPlaylists: []
+                        });
+                    }
+                    catch (e) {
+                        console.error("Error adding playlist: ", e);
+                    }
+                })();
+
                 this.LoginUser(email, password);
             })
             .catch((error) => {
@@ -176,19 +185,6 @@ class Model {
     }
 
 }
-const converter = {
-    toFirestore: (playlist) => {
-        return {
-            name: playlist.playlistName
-        };
-    },
-    fromFirestore: (snapshot, options) => {
-        const data = snapshot.data(options);
-        return new PlaylistModel();
-    }
-};
-
-
 
 
 

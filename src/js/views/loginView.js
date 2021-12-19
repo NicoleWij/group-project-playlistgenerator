@@ -23,7 +23,7 @@ function LoginView(props) {
                     <div className="row22"> <div className="starimg" onClick={e => { window.location.hash = "#register" }}>&#9733;</div></div>
                 </div>
             </div>
-            <div className="sidebox"> <div className="arrow" onClick={e => { props.LoginUser() }}>&#10230;</div> </div>
+            <div className="sidebox"> <div className="arrow" onClick={e => { props.LoginUser(); window.location.hash = "#myPlaylists" }}>&#10230;</div> </div>
         </div>
     )
 }
