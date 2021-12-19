@@ -161,7 +161,7 @@ class Model {
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 this.user = userCredential.user;
-                console.log(this.user);
+                console.log(this.user.uid)
                 this.getDataBaseInfo();
             })
             .catch
@@ -209,12 +209,13 @@ class Model {
                 console.log(error.message);
             });
     }
-
     logoutUser() {
         const auth = getAuth();
         signOut(auth)
             .then(() => {
-                // Sign-out Succes
+                // Sign-out Success
+                this.user = null;
+                this.notifyObservers();
             })
             .catch((error) => {
                 // Error occured

@@ -7,8 +7,8 @@ function TopbarView(props) {
             <div className="disclaimer">Disclaimer: the api is limited to 50 calls per 5 seconds</div>
             <div className="top">
                 <div className="topbuttons">
-                    <button className="b1 register" onClick={e => { window.location.hash = "#register" }}>Register</button>
-                    <button className="b1 login" onClick={e => { window.location.hash = "#login" }}>Log in</button>
+                    <button className={props.user===null?'b1 register' : 'hidden'} onClick={e => { window.location.hash = "#register" }}>Register</button>
+                    <button className="b1 login" onClick={ e => {return window.location.hash = "#login",  props.logoutUser() }}>{props.user===null?'Login': 'Logout'}</button>
                 </div>
             </div>
             <div className="head"><div className="headtxt" onClick={e => { window.location.hash = "#start" }}>PlaylistGenerator</div></div>
@@ -18,8 +18,8 @@ function TopbarView(props) {
                 <button className="b2" onClick={e => { return props.reset(), window.location.hash = "#generateStart" }}>Generate playlist</button>
                 <button className="b2" onClick={e => { window.location.hash = "#myPlaylists" }}>My playlist</button>
             </div>
+            <div className="sidebox"> <div className="arrow" onClick={e => { props.LoginUser(); window.location.hash = "#myPlaylists" }}>&#10230;</div> </div>
         </div>
-        // <div className="bottomBar"></div>
     )
 }
 
