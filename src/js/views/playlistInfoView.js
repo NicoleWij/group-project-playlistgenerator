@@ -8,17 +8,19 @@ function PlaylistInfoView(props) {
             <button className="buttonBack" onClick={e => { window.location.hash = "#generateArtists" }}>←</button>
 
             <table className="playlistInfo">
-                <tr><td>Your Genres:</td>{props.genres.map(genre => 
-                    
-                    <tr>{genre.value * 100}% {genre.name}</tr>
-                )}</tr>
+                <tbody>
+                    <tr><td>Your Genres:</td>{props.genres.map(genre =>
 
-                <tr ><td>Your Artist:</td><td>{props.artist !== null ? props.artist.name : "none"}</td>
-                </tr>
-                <tr ><td>Length:</td><td>{props.amount} songs</td>
-                </tr>
-                <tr ><td>Explicit songs:</td><td>{props.explicit ? "true" : "false"}</td>
-                </tr>
+                        <tr>{genre.value * 100}% {genre.name}</tr>
+                    )}</tr>
+
+                    <tr ><td>Your Artist:</td><td>{props.artist !== null ? props.artist.name : "none"}</td>
+                    </tr>
+                    <tr ><td>Length:</td><td>{props.amount} songs</td>
+                    </tr>
+                    <tr ><td>Explicit songs:</td><td>{props.explicit ? "true" : "false"}</td>
+                    </tr>
+                </tbody>
             </table>
             <button onClick={e => {
                 props.generateFromRadio();

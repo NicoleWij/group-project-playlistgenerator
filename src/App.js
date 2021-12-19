@@ -44,7 +44,6 @@ function App(props) {
 
       <Show hash="#login" class="mainContent debug"><LoginPresenter model={props.model} /></Show>
       <Show hash="#register" class="mainContent debug"><RegisterPresenter model={props.model} /></Show>
-      <Show hash="#register" class="mainContent debug"><TopBarPresenter model={props.model} /></Show>
       <Show hash="#generatedPlaylist" class="mainContent debug"><GeneratedPlaylistPresenter pmodel={props.pmodel}
         model={props.model} /></Show>
 
