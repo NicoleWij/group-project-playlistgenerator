@@ -57,3 +57,21 @@
   margin-top: 2%;
   cursor: pointer;
 }
+
+@media (max-width: 480px) {
+  .quotaLimit{
+    font-size: 10vmin;
+    color: red;
+    width: 40%;
+    position: sticky;
+    left: 30%;
+   /* 
+    font-size: 350%;
+    width: 20%;
+    position: relative;
+    left: 40%;
+    right: 40%;
+    margin-top: 2%;
+    */
+  }
+}
