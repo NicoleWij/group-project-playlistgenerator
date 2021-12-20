@@ -18,7 +18,6 @@ function TopbarView(props) {
                 <button className="b2" onClick={e => { return props.reset(), window.location.hash = "#generateStart" }}>Generate playlist</button>
                 <button className="b2" onClick={e => { window.location.hash = "#myPlaylists" }}>My playlist</button>
             </div>
-            <div className="sidebox"> <div className="arrow" onClick={e => { props.LoginUser(); window.location.hash = "#myPlaylists" }}>&#10230;</div> </div>
         </div>
     )
 }

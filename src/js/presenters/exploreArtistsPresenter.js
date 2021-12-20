@@ -3,6 +3,8 @@ import SongSource from '../songSource';
 import {PromiseNoData} from '../promiseNoData';
 import { ExploreArtistsView, StopMusic } from '../views/exploreArtistsView';
 import promiseNoArtists from '../promiseNoArtists';
+import ReactJkMusicPlayer from 'react-jinke-music-player'
+import 'react-jinke-music-player/assets/index.css'
 
 
 function ExploreArtistsPresenter(props) {
@@ -18,8 +20,6 @@ function ExploreArtistsPresenter(props) {
     const [errorSongs, setErrorSongs] = React.useState(null);
 
     const [audio, setAudio] = React.useState(null);
-    const [dataIndex, setDataIndex] = React.useState(0);
-    let index = 0;
 
 
     React.useEffect(() => {
@@ -32,7 +32,6 @@ function ExploreArtistsPresenter(props) {
                         .catch((error) => setError(error))
                 )
             }
-            setDataIndex(0);
         };
         props.model.addObserver(obs);
         return () => props.model.removeObserver(obs);
@@ -49,38 +48,25 @@ function ExploreArtistsPresenter(props) {
                             SongSource.getSongsFromArtist(id)
                                 .then((dataSongs) => {
                                     setDataSongs(dataSongs);
-                                    if (dataSongs.error === undefined) {
-                                        setAudio(playMusic(dataSongs.data, index));
-                                    }
                                 })
                                 .catch((errorSongs) => setErrorSongs(errorSongs)),
                         )
                     }} />
             )}
-            {PromiseNoData(promiseSongs, dataSongs, errorSongs) || <StopMusic audio={audio}
-                song={dataSongs.data[dataIndex]}
-                nextSong={() => {
-                    (dataIndex < 4) ? setDataIndex(dataIndex + 1) : setDataIndex(0);
-                    setAudio(playMusic(dataSongs.data, dataIndex + 1))
-                }}
-                musicStopped={() => setAudio(null)}
+            {PromiseNoData(promiseSongs, dataSongs, errorSongs) || <ReactJkMusicPlayer audioLists={
+                [{name: dataSongs.data[0].title,musicSrc: dataSongs.data[0].preview, singer: dataSongs.data[0].artist.name},
+                { name: dataSongs.data[1].title,musicSrc: dataSongs.data[1].preview, singer: dataSongs.data[0].artist.name},
+                {name: dataSongs.data[2].title,musicSrc: dataSongs.data[2].preview, singer: dataSongs.data[0].artist.name},
+                {name: dataSongs.data[3].title,musicSrc: dataSongs.data[3].preview, singer: dataSongs.data[0].artist.name},
+                {name: dataSongs.data[4].title,musicSrc: dataSongs.data[4].preview, singer: dataSongs.data[0].artist.name}]}
+                showDownload={false}
+                showThemeSwitch={false}
             />
             }
         </div>
     );
 }
 
-function playMusic(songs, index) {
-    if (index === 5) {
-        index = 0;
-    }
-    const audio = new Audio();
-    audio.src = songs[index].preview
-
-    console.log(audio)
-    audio.play();
-    return audio;
-}
 
 
 

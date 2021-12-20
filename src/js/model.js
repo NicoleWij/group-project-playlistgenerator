@@ -211,6 +211,7 @@ class Model {
     }
     logoutUser() {
         const auth = getAuth();
+        this.playlists = [];
         signOut(auth)
             .then(() => {
                 // Sign-out Success
