@@ -5,7 +5,7 @@ function LoginView(props) {
     return (
         <div className="contentbox">
 
-            <div className="sidebox"><button className="leftarrow" onClick={e => { window.location.hash = "#start" }}>&#10229;</button></div>
+            <div className="sidebox"><button className="buttonBack" onClick={e => {window.location.hash = "#exploreGenre"}}>←</button></div>
 
             <div className="midbox">
 
@@ -23,7 +23,7 @@ function LoginView(props) {
                     <div className="row22"> <div className="starimg" onClick={e => { window.location.hash = "#register" }}>&#9733;</div></div>
                 </div>
             </div>
-            <div className="sidebox"> <div className="arrow" onClick={e => { props.LoginUser(); window.location.hash = "#myPlaylists" }}>&#10230;</div> </div>
+            <button className="buttonBack" onClick={e => { props.audio.pause();window.location.hash = "#exploreGenre"}}>←</button>
         </div>
     )
 }
