@@ -55,4 +55,4 @@ When the user first enters the application, they can choose between the options 
 •    The option “my playlist” lets the user see their previous playlists in a list. When a playlist has been generated the user can change the name before saving it, but if the user changes their mind, they can change the names in the “my playlist” option. 
 
 A third-party component was added in the form of a music player, used in the explore option when a user plays music from an artist.
-https://rapidapi.com/deezerdevs/api/deezer-1/
+https://www.npmjs.com/package/react-jinke-music-player

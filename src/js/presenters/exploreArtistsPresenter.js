@@ -1,7 +1,7 @@
 import React from 'react';
 import SongSource from '../songSource';
 import {PromiseNoData} from '../promiseNoData';
-import { ExploreArtistsView, StopMusic } from '../views/exploreArtistsView';
+import ExploreArtistsView from '../views/exploreArtistsView';
 import promiseNoArtists from '../promiseNoArtists';
 import ReactJkMusicPlayer from 'react-jinke-music-player'
 import 'react-jinke-music-player/assets/index.css'
@@ -14,12 +14,10 @@ function ExploreArtistsPresenter(props) {
 
     const [genre, setGenre] = React.useState(props.model.currentGenre);
     
-
     const [promiseSongs, setPromiseSongs] = React.useState(null);
     const [dataSongs, setDataSongs] = React.useState(null);
     const [errorSongs, setErrorSongs] = React.useState(null);
 
-    const [audio, setAudio] = React.useState(null);
 
 
     React.useEffect(() => {
@@ -42,7 +40,6 @@ function ExploreArtistsPresenter(props) {
             {promiseNoArtists(promise, data, error) || (console.log(data),
                 <ExploreArtistsView artist={data.data}
                     genre={genre}
-                    audio={audio}
                     func={(id) => {
                         setPromiseSongs(
                             SongSource.getSongsFromArtist(id)
