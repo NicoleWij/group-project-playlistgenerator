@@ -5,7 +5,7 @@ export function RegisterView(props) {
     return (
         <div className="contentbox">
 
-            <div className="sidebox"><button className="leftarrow" onClick={e => { window.location.hash = "#start" }}>&#10229;</button></div>
+            <div className="sidebox"><button className="buttonBack" onClick={e => {window.location.hash = "#exploreGenre"}}>←</button></div>
 
             <div className="midbox">
 
@@ -23,8 +23,6 @@ export function RegisterView(props) {
                     <div className="row22"> <div className="boximg" onClick={e => { window.location.hash = "#login" }}></div></div>
                 </div>
             </div>
-
-            <div className="sidebox"> <div className="arrow" onClick={e => { props.RegisterUser() }}>&#10230;</div> </div>
         </div>
     )
 }

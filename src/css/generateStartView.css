@@ -264,26 +264,26 @@ html{
     .switch{
         position: relative;
         display: inline-block;
-        width: 90px;
-        height: 100%;
+        width: 20vmin;
+        height: 11vmin;
         margin-bottom: 30px;
     }
 
-      .slider:before{
-        height: 46px;
-        width: 46px;
-      }
+    .slider:before{
+        height: 9vmin;
+        width: 9vmin;
+    }
       
-      input:checked + .slider:before {
-        -webkit-transform: translateX(36px);
-        -ms-transform: translateX(36px);
-        transform: translateX(36px);
-      }
+    input:checked + .slider:before {
+        -webkit-transform: translateX(8vmin);
+        -ms-transform: translateX(8vmin);
+        transform: translateX(8vmin);
+    }
 
-      .random{
+    .random{
           display:block;
           padding: 1px;
-      }
+    }
 
     .titleTextG{
         position: static;
