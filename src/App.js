@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { } from './js/firebaseConfig';
+import { } from './js/firebasecd';
 // import './css/App.css';
 import ExploreArtistsPresenter from './js/presenters/exploreArtistsPresenter';
 import ExploreGenrePresenter from './js/presenters/exploreGenrePresenter';

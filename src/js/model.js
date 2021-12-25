@@ -7,7 +7,7 @@ import {
     signOut,
 } from 'firebase/auth';
 import { getDoc, setDoc, doc, updateDoc, collection, getDocs } from "firebase/firestore";
-import { db } from './firebaseConfig.js';
+import { db } from './firebasecd.js';
 class Model {
     constructor() {
         this.currentGenre = null;

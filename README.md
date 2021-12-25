@@ -28,12 +28,9 @@ Create a file firebaseConfig.js and place it in src/js
 Content of firebaseConfig.js:
 
 ```bash
-import { initializeApp } from 'firebase/app';
-import { firebaseConfig } from './firebasecd';
-import { getFirestore } from 'firebase/firestore';
-
-export const app = initializeApp(firebaseConfig);
-export const db = getFirestore();
+export const firebaseConfig = {
+    //...
+};
 ```
 
 Run: 
