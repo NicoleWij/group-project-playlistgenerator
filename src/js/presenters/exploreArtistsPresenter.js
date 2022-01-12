@@ -1,6 +1,6 @@
 import React from 'react';
 import SongSource from '../songSource';
-import {PromiseNoData} from '../promiseNoData';
+import { PromiseNoData } from '../promiseNoData';
 import ExploreArtistsView from '../views/exploreArtistsView';
 import promiseNoArtists from '../promiseNoArtists';
 import ReactJkMusicPlayer from 'react-jinke-music-player'
@@ -13,17 +13,17 @@ function ExploreArtistsPresenter(props) {
     const [error, setError] = React.useState(null);
 
     const [genre, setGenre] = React.useState(props.model.currentGenre);
-    
+
     const [promiseSongs, setPromiseSongs] = React.useState(null);
     const [dataSongs, setDataSongs] = React.useState(null);
     const [errorSongs, setErrorSongs] = React.useState(null);
-
+    let songs = [];
 
 
     React.useEffect(() => {
         const obs = () => {
             setGenre(props.model.currentGenre)
-            if(props.model.currentGenre !== null){
+            if (props.model.currentGenre !== null) {
                 setPromise(
                     SongSource.getArtistsFromGenre(props.model.currentGenre.id)
                         .then((data) => setData(data))
@@ -50,16 +50,16 @@ function ExploreArtistsPresenter(props) {
                         )
                     }} />
             )}
-            {PromiseNoData(promiseSongs, dataSongs, errorSongs) || <ReactJkMusicPlayer audioLists={
-                [{name: dataSongs.data[0].title,musicSrc: dataSongs.data[0].preview, singer: dataSongs.data[0].artist.name},
-                { name: dataSongs.data[1].title,musicSrc: dataSongs.data[1].preview, singer: dataSongs.data[0].artist.name},
-                {name: dataSongs.data[2].title,musicSrc: dataSongs.data[2].preview, singer: dataSongs.data[0].artist.name},
-                {name: dataSongs.data[3].title,musicSrc: dataSongs.data[3].preview, singer: dataSongs.data[0].artist.name},
-                {name: dataSongs.data[4].title,musicSrc: dataSongs.data[4].preview, singer: dataSongs.data[0].artist.name}]}
-                showDownload={false}
-                showThemeSwitch={false}
-            />
-            }
+            {PromiseNoData(promiseSongs, dataSongs, errorSongs) ||
+                (dataSongs.data.forEach(song => {
+                    songs = [...songs, { name: song.title, musicSrc: song.preview, singer: song.artist.name, cover: song.album.cover_xl }]
+                }),
+                    <ReactJkMusicPlayer audioLists={
+                        songs}
+                        showDownload={false}
+                        showThemeSwitch={false}
+                    />
+                )}
         </div>
     );
 }
