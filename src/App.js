@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { } from './js/firebasecd';
 // import './css/App.css';
 import ExploreArtistsPresenter from './js/presenters/exploreArtistsPresenter';
@@ -17,15 +17,15 @@ import GeneratedPlaylistPresenter from './js/presenters/generatedPlaylistPresent
 import PlaylistInfoPresenter from './js/presenters/playlistInfoPresenter';
 
 function defaultRoute() {
-  if (["#start", "#exploreGenre", "#exploreArtists", "#login", "#register", "#generateStart", "#generateArtists"
+  if (!(["#start", "#exploreGenre", "#exploreArtists", "#login", "#register", "#generateStart", "#generateArtists", "#generateGenre"
     , "#myPlaylists", "#generatedPlaylist", "#playlist"]
-    .find((knownRoute) => knownRoute !== window.location.hash)) {
+    .find((knownRoute) => knownRoute === window.location.hash))) {
     window.location.hash = "#start";
   }
 }
 
 function App(props) {
-
+  
   defaultRoute();
   return (
     <div>

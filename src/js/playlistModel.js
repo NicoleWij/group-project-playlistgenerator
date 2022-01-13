@@ -12,7 +12,6 @@ class PlaylistModel {
         this.artist = null;
         this.total = 0;
         this.currentSong = null;
-        this.currentAudio = null;
         this.playlistDone = false;
     }
 
@@ -26,32 +25,38 @@ class PlaylistModel {
         this.artist = null;
         this.total = 0;
         this.currentSong = null;
-        this.currentAudio = null;
         this.playlistDone = false;
         this.notifyObservers();
     }
 
     addGenre(radioID, value, name) {
-
+        console.log("radioId: ",  radioID, " Value:", value, " Name:", name );
+        console.log("Checking value === 0")
         if (value === 0) {
-            console.log("remove")
             this.removeGenre(radioID);
             this.setTotalPercent();
+            this.notifyObservers();
             return;
         }
+        console.log("Checking if statement nr 2")
+
         if (this.genres.some(g => g.id === radioID)) {
+        console.log("Went into statment nr 2")
             this.genres.find(g => g.id === radioID).value = (value / 100);
             this.setTotalPercent();
+            this.notifyObservers();
             return;
         }
+        console.log("After statement nr 2, setting some this")
 
         this.genres = [...this.genres, { id: radioID }];
         this.genres.find(x => x.id === radioID).value = (value / 100);
         this.genres.find(x => x.id === radioID).name = name;
-        console.log(this.genres);
-        this.setTotalPercent();
-        console.log(this.total)
+        console.log("setTotalPercent")
 
+        this.setTotalPercent();
+
+        console.log("Notifying observers")
 
         this.notifyObservers();
     }
@@ -80,14 +85,11 @@ class PlaylistModel {
         if (this.actualNumberOfSongs >= this.chosenNumberOfSongs) {
             return;
         }
-        console.log(this.actualNumberOfSongs)
         this.notifyObservers();
     }
 
     setExplicit(choice) {
-        console.log(choice)
         this.explicit = choice;
-        console.log(this.explicit);
         this.notifyObservers();
     }
 
@@ -102,34 +104,15 @@ class PlaylistModel {
             this.notifyObservers();
             return;
         }
-        // if (this.currentAudio !== null) {
-        //     this.removeCurrentAudio();
-        // }
         this.currentSong = song;
-        // this.setCurrentAudio(song);
-        this.notifyObservers();
-    }
-
-    setCurrentAudio(song) {
-        this.currentAudio = new Audio();
-        this.currentAudio.src = song.preview;
-        this.currentAudio.play();
-        this.notifyObservers();
-    }
-
-    removeCurrentAudio() {
-        this.currentAudio.pause();
-        this.currentSong = null;
         this.notifyObservers();
     }
 
     addSongsToPlaylist(arrayWithSongs) {
-        console.log(this.chosenNumberOfSongs)
         if (this.songs.length >= this.chosenNumberOfSongs) {
             return;
         }
         this.songs = this.songs.concat(arrayWithSongs);
-        console.log(this.actualNumberOfSongs)
         this.playlistDone = true;
 
         this.notifyObservers();

@@ -20,24 +20,22 @@ function GeneratedPlaylistPresenter(props) {
         };
         props.pmodel.addObserver(obs);
         return () => props.pmodel.removeObserver(obs);
-    }, []);
+    }, [props.pmodel]);
 
     return (
         <div>
             <GeneratedPlaylistView songs={songs}
                 playlistName={name}
                 setPlaylistName={(name) => props.pmodel.setPlaylistName(name)}
-                playOrPause={(song) => (props.pmodel.setCurrentSong(song), console.log(props.pmodel.currentSong), setSongToPlay([props.pmodel.currentSong]))}
-                playList={() => { setSongToPlay(songs)}}
+                playSong={(song) => {return(props.pmodel.setCurrentSong(song), setSongToPlay([props.pmodel.currentSong]))}}
+                playList={() => { setSongToPlay(songs) }}
                 currentSong={currentSong}
                 save={() => props.model.savePlaylist(props.pmodel)}
             />
-            {console.log(songToPlay)}
             {songToPlay[0] === null || (
                 songToPlay.forEach(song => {
                     songArray = [...songArray, { name: song.title, musicSrc: song.preview, singer: song.artist.name, cover: song.album.cover_xl }]
                 }),
-                console.log(songArray),
                 <ReactJkMusicPlayer
                     clearPriorAudioLists
                     audioLists={songArray}
@@ -50,20 +48,6 @@ function GeneratedPlaylistPresenter(props) {
     );
 }
 
-function Play(song) {
-    // let songs = [];
-    // songArray.forEach(song => {
-    //     songs = [...songs, { name: song.title, musicSrc: song.preview, singer: song.artist.name, cover: song.album.cover_xl }]
-    // });
-    // console.log(songs);
-    console.log(song);
-    <ReactJkMusicPlayer
-        audioLists={[{ name: song.title, musicSrc: song.preview, singer: song.artist.name, cover: song.album.cover_xl }]}
-        showDownload={false}
-        showThemeSwitch={false}
-    />
-    console.log("bottom")
-}
 
 
 export default GeneratedPlaylistPresenter;

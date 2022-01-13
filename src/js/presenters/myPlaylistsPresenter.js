@@ -10,7 +10,7 @@ function MyPlaylistsPresenter(props) {
         };
         props.model.addObserver(obs);
         return () => props.model.removeObserver(obs);
-    }, []);
+    }, [props.model]);
 
     return (
         <div>

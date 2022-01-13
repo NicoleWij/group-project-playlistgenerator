@@ -19,7 +19,6 @@ function SearchResultsView(props) {
     var artists = props.searchResults.filter((x) => !(x.name.includes("feat.")))
     artists = artists.filter((x) => !(x.name.includes(",")))
     return (
-        console.log(props.searchResults),
         <div>
             <div className="searchResults">
                 {artists.slice(0, 10).map(artist =>

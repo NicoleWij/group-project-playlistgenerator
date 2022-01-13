@@ -24,7 +24,7 @@ function GenerateGenreView(props) {
                     <img alt={genre.name}src={genre.img} className="generateImgGenre"></img>
                     <div>{genre.name}</div>
                     <div className="slide">
-                        <input onChange={e => { e = value(genre.id, genre.name); props.setGenre(genre.radio, e, genre.name) }}
+                        <input onChange={e => { e.preventDefault(); e = value(genre.id, genre.name); props.setGenre(genre.radio, e, genre.name) }}
                             type="range"
                             id={genre.id}
                             min="0" max="100"

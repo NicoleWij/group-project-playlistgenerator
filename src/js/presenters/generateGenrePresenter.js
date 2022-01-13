@@ -12,15 +12,13 @@ function GenerateGenrePresenter(props) {
         };
         props.pmodel.addObserver(obs);
         return () => props.pmodel.removeObserver(obs);
-    }, []);
+    }, [props.pmodel]);
 
     return (
         <div>
             {<GenerateGenreView genres={genres}
                                 setGenre={(genre, value, name) => props.pmodel.addGenre(genre, value, name)}
                                 totalPercent={total}/>}
-            {console.log(total)}
-            {console.log(props.pmodel.genres)}
         </div>
     );
 }

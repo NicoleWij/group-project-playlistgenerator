@@ -37,7 +37,7 @@ function PlaylistInfoPresenter(props) {
         };
         props.pmodel.addObserver(obs);
         return () => props.pmodel.removeObserver(obs);
-    }, []);
+    }, [props.pmodel]);
 
     return (
         <div>
@@ -48,13 +48,12 @@ function PlaylistInfoPresenter(props) {
                 amountOfSongs={amountOfSongs}
                 generated={generated}
                 generateFromRadio={() => {
-                    props.pmodel.genres.map(genre => {
+                    props.pmodel.genres.forEach(genre => {
                         let array = []
                         setPromise(
                             SongSource.getTracklistFromRadio(genre.id)
                                 .then((data) => {
                                     setData(data);
-                                    console.log(data)
                                     if (data.error === undefined) {
                                         array = pickSongs(data.data, genre.value, props.pmodel.chosenNumberOfSongs, props.pmodel.explicit);
                                         for (let i = 0; i < array.length; i++) {
@@ -75,7 +74,6 @@ function PlaylistInfoPresenter(props) {
                         SongSource.getTracklistFromArtist(props.pmodel.artist.id)
                             .then((data) => {
                                 setDataArtist(data);
-                                console.log(data)
                                 if (data.error === undefined) {
                                     array = pickSongs(data.data, 1, props.pmodel.chosenNumberOfSongs, props.pmodel.explicit);
                                     for (let i = 0; i < array.length; i++) {
@@ -119,7 +117,6 @@ function pickSongs(arrayWithSongs, percentage, numberOfSongs, explicit) {
             i++;
         }
     }
-    console.log(songs)
     return songs;
 }
 

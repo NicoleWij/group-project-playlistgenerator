@@ -8,11 +8,9 @@ import 'react-jinke-music-player/assets/index.css';
 
 
 function ExploreArtistsPresenter(props) {
-    const [promise, setPromise] = React.useState(null);
-    const [data, setData] = React.useState(null);
-    const [error, setError] = React.useState(null);
-
-    const [genre, setGenre] = React.useState(props.model.currentGenre);
+    const [promise, setPromise] = React.useState(props.model.genre);
+    const [data, setData] = React.useState(props.model.artistsData);
+    const [error, setError] = React.useState(props.model.artistsError);
 
     const [promiseSongs, setPromiseSongs] = React.useState(null);
     const [dataSongs, setDataSongs] = React.useState(null);
@@ -22,24 +20,19 @@ function ExploreArtistsPresenter(props) {
 
     React.useEffect(() => {
         const obs = () => {
-            setGenre(props.model.currentGenre)
-            if (props.model.currentGenre !== null) {
-                setPromise(
-                    SongSource.getArtistsFromGenre(props.model.currentGenre.id)
-                        .then((data) => setData(data))
-                        .catch((error) => setError(error))
-                )
-            }
+            setPromise(props.model.genre);
+            setData(props.model.artistsData);
+            setError(props.model.artistsError);
         };
         props.model.addObserver(obs);
         return () => props.model.removeObserver(obs);
-    }, []);
+    }, [props.model]);
 
     return (
         <div>
-            {promiseNoArtists(promise, data, error) || (console.log(data),
+            {promiseNoArtists(promise, data, error) ||(
                 <ExploreArtistsView artist={data.data}
-                    genre={genre}
+                    genre={promise}
                     func={(id) => {
                         setPromiseSongs(
                             SongSource.getSongsFromArtist(id)

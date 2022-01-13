@@ -7,7 +7,7 @@ function ExploreGenrePresenter(props) {
     return (
         <div>
             {<ExploreGenresView genres={props.model.genreList}
-                genreChosen={(genre) => props.model.setCurrentGenre(genre)} />}
+                genreChosen={(genre) => props.model.getArtists(genre)} />}
         </div>
     );
 }

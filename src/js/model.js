@@ -1,16 +1,16 @@
-import { getDefaultNormalizer } from '@testing-library/react';
 import {
     getAuth,
     createUserWithEmailAndPassword,
-    onAuthStateChanged,
     signInWithEmailAndPassword,
     signOut,
 } from 'firebase/auth';
-import { getDoc, setDoc, doc, updateDoc, collection, getDocs } from "firebase/firestore";
+import { getDoc, setDoc, doc, updateDoc} from "firebase/firestore";
 import { db } from './firebasecd.js';
+import SongSource from './songSource.js';
 class Model {
     constructor() {
         this.currentGenre = null;
+        this.genre = null;
         this.observers = [];
         this.currentPlaylist = null;
         this.playlists = [];
@@ -122,7 +122,6 @@ class Model {
     }
 
     setPlaylistName(name) {
-        console.log(this.currentPlaylist)
         this.currentPlaylist.name = name;
         this.playlists = this.playlists.filter(
             (playlist) => playlist !== undefined
@@ -139,8 +138,21 @@ class Model {
                 console.error("Error adding playlist: ", e);
             }
         })();
-        console.log(this.playlists);
         this.notifyObservers();
+    }
+
+    getArtists(genre) {
+        // if (genre.id === this.genre.id) return;
+        this.artistsError = null;
+        this.artistsData = null;
+        this.genre = genre;
+        this.notifyObservers();
+
+        if (this.genre) {
+            SongSource.getArtistsFromGenre(this.genre.id)
+                .then((response) => {this.artistsData = response; this.notifyObservers();})
+                .catch((error) => {this.artistsError = error; this.notifyObservers()})
+        }
     }
 
     addObserver(callback) {
@@ -161,7 +173,6 @@ class Model {
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 this.user = userCredential.user;
-                console.log(this.user.uid)
                 this.getDataBaseInfo();
             })
             .catch
@@ -176,7 +187,6 @@ class Model {
             const doc = await getDoc(docRef);
             const data = doc.data();
             data.userPlaylists.forEach(list => this.playlists.push(list));
-            console.log(this.playlists);
             this.playlists = this.playlists.filter(
                 (playlist) => playlist !== undefined
             );
@@ -186,7 +196,6 @@ class Model {
 
 
     RegisterUser(email, password) {
-        console.log(email, password);
         const auth = getAuth();
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {

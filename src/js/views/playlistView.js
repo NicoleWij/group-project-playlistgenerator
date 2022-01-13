@@ -17,6 +17,7 @@ function PlaylistView(props) {
                     </div>
                     <input className={props.change?"input":"hidden"} onChange={e => props.setPlaylistName(e.target.value)}></input>
                     <button className={props.change?"saveName":"hidden"} onClick={e => props.saveName()}>Save</button>
+                    <button onClick={e => props.playList()}>hej</button>
                 </div>
 
                 <table className="playlisttable">
@@ -31,7 +32,7 @@ function PlaylistView(props) {
                             return (
                                 <tr key={song.id}>
                                     <td id="name" className="playButton" onClick={e => {
-                                        props.playOrPause(song);
+                                        props.playSong(song);
                                     }}>{song === props.currentSong ? "◼" : "▶"}</td>
                                     <td>{tooLong(song.title) + (song.explicit_lyrics ? "🅴" : "")}</td>
                                     <td>{tooLong(song.artist.name)}</td>

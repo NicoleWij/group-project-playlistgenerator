@@ -2,7 +2,6 @@ import React from 'react';
 import '../../css/playlistView.css';
 
 function GeneratedPlaylistView(props) {
-    console.log(props.songs)
     return (
         <div className="playlistMenu">
             <div className="leftbox"></div>
@@ -10,7 +9,7 @@ function GeneratedPlaylistView(props) {
             <div className="middlebox">
                 <div className="toprow">
                     <input type="text" className="titleText" placeholder="Edit Playlistname" onChange={e => props.setPlaylistName(e.target.value)} ></input>
-                    <button onClick={e => props.playList()}>hej</button>
+                    <button onClick={e => props.playList()}>Play</button>
                     <div className="savecontainer"><button className="save" disabled={props.playlistname === null} onClick={e => {props.save(); window.location.hash = "#myPlaylists"}}>Save</button></div>
                 </div>
 
@@ -27,7 +26,7 @@ function GeneratedPlaylistView(props) {
                             return (
                                 <tr>
                                     <td id="name" className="playButton" onClick={e => {
-                                        props.playOrPause(song);
+                                        props.playSong(song);
                                     }}>{song === props.currentSong ? "◼" : "▶"}</td>
                                     <td>{tooLong(song.title) + (song.explicit_lyrics ? "🅴" : "")}</td>
                                     <td>{tooLong(song.artist.name)}</td>

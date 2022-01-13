@@ -11,7 +11,7 @@ function PlaylistInfoView(props) {
                 <tbody>
                     <tr><td>Your Genres:</td>{props.genres.map(genre =>
 
-                        <tr>{genre.value * 100}% {genre.name}</tr>
+                        <tr key={genre.id}>{genre.value * 100}% {genre.name}</tr>
                     )}</tr>
 
                     <tr ><td>Your Artist:</td><td>{props.artist !== null ? props.artist.name : "none"}</td>

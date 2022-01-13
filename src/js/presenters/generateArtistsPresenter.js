@@ -18,7 +18,7 @@ function GenerateArtistsPresenter(props) {
         }
         props.pmodel.addObserver(obs);
         return () => props.pmodel.removeObserver(obs);
-    }, []);
+    }, [props.pmodel]);
 
     return (
         <div>

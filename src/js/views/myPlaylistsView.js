@@ -2,7 +2,6 @@ import React from 'react';
 import '../../css/myPlaylistsView.css';
 
 function MyPlaylistsView(props) {
-    console.log(props.playlists)
     return (
         <div className="playlistMenu">
             <div className="leftbox"><button className="buttonBack" onClick={e => { window.location.hash = "#start" }}>←</button></div>
@@ -22,7 +21,7 @@ function MyPlaylistsView(props) {
                         </tr>
                         {props.playlists.map(playlist => {
                             return (
-                                <tr key={`${playlist.id}`} onClick={e => { return props.setCurrent(playlist), window.location.hash = "#playlist" }}>
+                                <tr key={`${playlist.id}`} onClick={e => { return (props.setCurrent(playlist), window.location.hash = "#playlist") }}>
                                     <td>{playlist.name}</td>
                                     <td>{playlist.date}</td>
                                     <td>{playlist.songs.length}</td>
