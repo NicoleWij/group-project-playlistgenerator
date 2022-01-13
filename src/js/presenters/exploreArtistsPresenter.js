@@ -47,8 +47,9 @@ function ExploreArtistsPresenter(props) {
                 (dataSongs.data.forEach(song => {
                     songs = [...songs, { name: song.title, musicSrc: song.preview, singer: song.artist.name, cover: song.album.cover_xl }]
                 }),
-                    <ReactJkMusicPlayer audioLists={
-                        songs}
+                    <ReactJkMusicPlayer 
+                        clearPriorAudioLists
+                        audioLists={songs}
                         showDownload={false}
                         showThemeSwitch={false}
                     />
