@@ -3,8 +3,8 @@ import SongSource from '../songSource';
 import { PromiseNoData } from '../promiseNoData';
 import ExploreArtistsView from '../views/exploreArtistsView';
 import promiseNoArtists from '../promiseNoArtists';
-import ReactJkMusicPlayer from 'react-jinke-music-player'
-import 'react-jinke-music-player/assets/index.css'
+import ReactJkMusicPlayer from 'react-jinke-music-player';
+import 'react-jinke-music-player/assets/index.css';
 
 
 function ExploreArtistsPresenter(props) {

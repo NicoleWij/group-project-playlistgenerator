@@ -10,6 +10,7 @@ function GeneratedPlaylistView(props) {
             <div className="middlebox">
                 <div className="toprow">
                     <input type="text" className="titleText" placeholder="Edit Playlistname" onChange={e => props.setPlaylistName(e.target.value)} ></input>
+                    <button onClick={e => props.playList()}>hej</button>
                     <div className="savecontainer"><button className="save" disabled={props.playlistname === null} onClick={e => {props.save(); window.location.hash = "#myPlaylists"}}>Save</button></div>
                 </div>
 

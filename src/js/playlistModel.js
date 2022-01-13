@@ -7,7 +7,6 @@ class PlaylistModel {
         this.actualNumberOfSongs = 0;
         this.explicit = false;
         this.genres = [];
-        this.currentSong = null;
         this.songs = [];
         this.observers = [];
         this.artist = null;
@@ -23,7 +22,6 @@ class PlaylistModel {
         this.actualNumberOfSongs = 0;
         this.explicit = false;
         this.genres = [];
-        this.currentSong = null;
         this.songs = [];
         this.artist = null;
         this.total = 0;
@@ -100,14 +98,15 @@ class PlaylistModel {
 
     setCurrentSong(song) {
         if (this.currentSong === song) {
-            this.removeCurrentAudio();
+            this.currentSong = null;
+            this.notifyObservers();
             return;
         }
-        if (this.currentAudio !== null) {
-            this.removeCurrentAudio();
-        }
+        // if (this.currentAudio !== null) {
+        //     this.removeCurrentAudio();
+        // }
         this.currentSong = song;
-        this.setCurrentAudio(song);
+        // this.setCurrentAudio(song);
         this.notifyObservers();
     }
 
